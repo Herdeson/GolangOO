@@ -1,24 +1,22 @@
 package main
 
-import "fmt"
-
-type ContaCorrente struct {
-	titular       string
-	numeroAgencia int
-	numeroConta   int
-	saldo         float64
-}
+import (
+	"GOLANGOO/contas"
+	"fmt"
+)
 
 func main() {
-	contaDoGuilherme := ContaCorrente{titular: "Guilherme"}
-	fmt.Println(contaDoGuilherme)
-	contaDaSabrina := ContaCorrente{"Sabrina", 12555, 565656, 156.30}
-	fmt.Println(contaDaSabrina)
 
-	var contaDaCris *ContaCorrente
-	contaDaCris = new(ContaCorrente)
-	contaDaCris.titular = "Cristina"
+	contaDaSilvia := contas.ContaCorrente{}
+	contaDaSilvia.Titular = "Silvia"
+	contaDaSilvia.Saldo = 500
 
-	fmt.Println(*contaDaCris)
+	contaAdriano := contas.ContaCorrente{}
+	contaAdriano.Titular = "Adriano"
+	contaAdriano.Saldo = 200
+
+	contaDaSilvia.Transferir(-200, &contaAdriano)
+	fmt.Println(contaDaSilvia)
+	fmt.Println(contaAdriano)
 
 }
